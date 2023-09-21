@@ -1,0 +1,599 @@
+{
+  "name": "microsoft-onedrive",
+  "label": "Microsoft OneDrive",
+  "version": "1.0.0",
+  "description": "OneDrive is a cloud storage and file synchronization service developed by Microsoft. It allows users to store their files and documents securely in the cloud, making them accessible from various devices with an internet connection. OneDrive integrates seamlessly with Microsoft Office applications, enabling users to create, edit, and collaborate on documents in real time. It offers features such as automatic backup of photos and videos from mobile devices, file sharing with others, version history for documents, and the ability to access files offline.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Asset Management",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Get Access Token",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "select",
+        "options": [
+          "On behalf of User - Delegate Permissions",
+          "Without a User - Application Permissions"
+        ],
+        "name": "auth_type",
+        "value": "Without a User - Application Permissions",
+        "description": "Select the method using which you will get access tokens used to access the Azure WAF APIs.",
+        "onchange": {
+          "Without a User - Application Permissions": [
+            {
+              "title": "Server URL",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "resource",
+              "value": "https://graph.microsoft.com/v1.0",
+              "description": "The service-based URI to connect and perform the automated operations. "
+            },
+            {
+              "title": "Client ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "client_id",
+              "description": "Unique API ID of the Azure AD application that is used to create an authentication token required to access the API. "
+            },
+            {
+              "title": "Client Secret",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "client_secret",
+              "description": "Unique API Secret of the Azure AD application that is used to create an authentication token required to access the API. "
+            },
+            {
+              "title": "Tenant ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "tenant_id",
+              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+            },
+            {
+              "title": "Verify SSL",
+              "required": false,
+              "editable": true,
+              "visible": true,
+              "type": "checkbox",
+              "name": "verify_ssl",
+              "value": true,
+              "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+            }
+          ],
+          "On behalf of User - Delegate Permissions": [
+            {
+              "title": "Server URL",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "resource",
+              "value": "https://graph.microsoft.com/v1.0",
+              "description": "The service-based URI to connect and perform the automated operations. "
+            },
+            {
+              "title": "Client ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "client_id",
+              "description": "Unique API ID of the Azure AD application that is used to create an authentication token required to access the API. "
+            },
+            {
+              "title": "Client Secret",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "client_secret",
+              "description": "Unique API Secret of the Azure AD application that is used to create an authentication token required to access the API. "
+            },
+            {
+              "title": "Tenant ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "tenant_id",
+              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+            },
+            {
+              "title": "Auth Code",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "code",
+              "tooltip": "The authorization code that you acquired during the authorization step.",
+              "description": "The authorization code that you acquired during the authorization step."
+            },
+            {
+              "title": "Redirect URL",
+              "required": false,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "redirect_url",
+              "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri you registered in the app registration portal."
+            },
+            {
+              "title": "Verify SSL",
+              "required": false,
+              "editable": true,
+              "visible": true,
+              "type": "checkbox",
+              "name": "verify_ssl",
+              "value": true,
+              "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_user_onedrive",
+      "title": " Get User OneDrive",
+      "annotation": "get_user_onedrive",
+      "description": "Retrieve the properties and relationships of a User's Drive resource.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "user_id",
+          "title": "User ID or Principal Name",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify the identifier for the user object who owns the OneDrive. It can be fetched from the User Section in Azure AD.",
+          "description": "Specify the identifier for the user object who owns the OneDrive. It can be fetched from the User Section in Azure AD."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "driveType": "",
+        "owner": {
+          "user": {
+            "id": "",
+            "displayName": ""
+          }
+        },
+        "quota": {
+          "deleted": "",
+          "fileCount": "",
+          "remaining": "",
+          "state": "",
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_document_library",
+      "title": "Get Document Library",
+      "annotation": "get_document_library",
+      "description": "This action fetches the access to a Group's or Site's default Document library.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "select_option",
+          "title": "Associated With",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify Whether You want to Fetch Document Library that is Associated with A Group or from a Site defined in Azure AD.",
+          "description": "Specify Whether You want to Fetch Document Library that is Associated with A Group or from a Site defined in Azure AD.",
+          "options": [
+            "Group",
+            "Site"
+          ],
+          "onchange": {
+            "Group": [
+              {
+                "name": "g_id",
+                "title": "Group ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the Identifier for the group which owns the document library.. It can be fetched from the Group Section in Azure AD.",
+                "description": "Specify the Identifier for the group which owns the document library.. It can be fetched from the Group Section in Azure AD."
+              }
+            ],
+            "Site": [
+              {
+                "name": "s_id",
+                "title": "Site ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the Identifier for the Site which owns the document library.. It can be fetched from the Sites Section in Azure AD.",
+                "description": "Specify the Identifier for the Site which owns the document library.. It can be fetched from the Sites Section in Azure AD."
+              }
+            ]
+          }
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "driveType": "",
+        "owner": {
+          "user": {
+            "id": "",
+            "displayName": ""
+          }
+        },
+        "quota": {
+          "deleted": "",
+          "fileCount": "",
+          "remaining": "",
+          "state": "",
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_drive_by_id",
+      "title": "Get Drive By ID",
+      "annotation": "get_drive_by_id",
+      "description": "Retrieves the Properties and relationships of Drive Resource by Drive ID.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "drive_id",
+          "title": "Drive ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify the unique Drive identifier for the drive requested.",
+          "description": "Specify the unique Drive identifier for the drive requested."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "driveType": "",
+        "owner": {
+          "user": {
+            "id": "",
+            "displayName": ""
+          }
+        },
+        "quota": {
+          "deleted": "",
+          "fileCount": "",
+          "remaining": "",
+          "state": "",
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "create_folder",
+      "title": "Create Folder",
+      "annotation": "create_folder",
+      "description": "This action Creates a new folder or DriveItem in a Drive with a specified parent item or path.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "associated_with",
+          "title": "Associated With",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify Whether You want to create Folder in a Drive via Drive ID or Find Drive by it's User ID.",
+          "description": "Specify Whether You want to create Folder in a Drive via Drive ID or Find Drive by it's User ID.",
+          "options": [
+            "Drive",
+            "User"
+          ],
+          "onchange": {
+            "Drive": [
+              {
+                "name": "d_id",
+                "title": "Drive ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique Drive identifier for the drive requested.",
+                "description": "Specify the unique Drive identifier for the drive requested."
+              }
+            ],
+            "User": [
+              {
+                "name": "u_id",
+                "title": "User ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique User identifier associated with the Drive.",
+                "description": "Specify the unique User identifier associated with the Drive."
+              }
+            ]
+          }
+        },
+        {
+          "name": "folder_structure",
+          "title": "Folder Structure",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": {
+            "name": "New Folder",
+            "folder": {},
+            "@microsoft.graph.conflictBehavior": "rename"
+          },
+          "tooltip": "Specify a JSON representation of the DriveItem Folder to create in the Drive.",
+          "description": "Specify a JSON representation of the DriveItem Folder to create in the Drive."
+        },
+        {
+          "name": "parent_item_id",
+          "title": "Parent Item ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": "root",
+          "tooltip": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA",
+          "description": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA"
+        }
+      ],
+      "output_schema": {
+        "createdBy": {
+          "user": {
+            "displayName": "",
+            "id": ""
+          }
+        },
+        "createdDateTime": "",
+        "eTag": "",
+        "id": "",
+        "lastModifiedBy": {
+          "user": {
+            "displayName": "",
+            "id": ""
+          }
+        },
+        "lastModifiedDateTime": "",
+        "name": "",
+        "parentReference": {
+          "driveId": "",
+          "id": "",
+          "path": ""
+        },
+        "size": "",
+        "folder": {
+          "childCount": ""
+        }
+      }
+    },
+    {
+      "operation": "download_file",
+      "title": "Download File",
+      "annotation": "download_file",
+      "description": "Download the contents of the primary stream (file) of a DriveItem. Only driveItems with the file property can be downloaded.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "associated_with",
+          "title": "Associated With",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify Whether You want to Download Items in a Drive via Drive ID or Find Drive by it's User ID.",
+          "description": "Specify Whether You want to Download Items in a Drive via Drive ID or Find Drive by it's User ID.",
+          "options": [
+            "Drive",
+            "User"
+          ],
+          "onchange": {
+            "Drive": [
+              {
+                "name": "d_id",
+                "title": "Drive ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique Drive identifier for the drive requested.",
+                "description": "Specify the unique Drive identifier for the drive requested."
+              }
+            ],
+            "User": [
+              {
+                "name": "u_id",
+                "title": "User ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique User identifier associated with the Drive.",
+                "description": "Specify the unique User identifier associated with the Drive."
+              }
+            ]
+          }
+        },
+        {
+          "name": "item_id",
+          "title": "Item ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify the ID of Item inside the Drive resource that you want to Download.",
+          "description": "Specify the ID of Item inside the Drive resource that you want to Download."
+        }
+      ],
+      "output_schema": {
+        "Location": ""
+      }
+    },
+    {
+      "operation": "upload_file",
+      "title": "Upload File",
+      "annotation": "upload_file",
+      "description": "This simple upload API allows you to provide the contents of a new file and then upload it to the provided Path on the OneDrive.This method only supports files up to 4MB in size.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "associated_with",
+          "title": "Associated With",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify Whether You want to Download Items in a Drive via Drive ID or Find Drive by it's User ID.",
+          "description": "Specify Whether You want to Download Items in a Drive via Drive ID or Find Drive by it's User ID.",
+          "options": [
+            "Drive",
+            "User"
+          ],
+          "onchange": {
+            "Drive": [
+              {
+                "name": "d_id",
+                "title": "Drive ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique Drive identifier for the drive requested.",
+                "description": "Specify the unique Drive identifier for the drive requested."
+              }
+            ],
+            "User": [
+              {
+                "name": "u_id",
+                "title": "User ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique User identifier associated with the Drive.",
+                "description": "Specify the unique User identifier associated with the Drive."
+              }
+            ]
+          }
+        },
+        {
+          "name": "input",
+          "title": "Type",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Select a method of file submission to GitGuardian for analysis. You can select from following options: (Attachment ID, File IRI)",
+          "description": "Select a method of file submission to GitGuardian for analysis. You can select from following options: (Attachment ID, File IRI)",
+          "options": [
+            "Attachment ID",
+            "File IRI"
+          ]
+        },
+        {
+          "name": "value",
+          "title": "Reference ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify a reference ID to access the attachment metadata from FortiSOAR\u2122's Attachments module. If you have selected Attachment ID, this defaults to the {{vars.attachment_id}} value. If you have selected File IRI, then this defaults to the {{vars.file_iri}} value.",
+          "description": "Specify a reference ID to access the attachment metadata from FortiSOAR\u2122's Attachments module. If you have selected Attachment ID, this defaults to the {{vars.attachment_id}} value. If you have selected File IRI, then this defaults to the {{vars.file_iri}} value."
+        },
+        {
+          "name": "parent_item_id",
+          "title": "Parent Item ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": "root",
+          "tooltip": "Specify the Folder Path to which you want to Upload Item in Drive Resource. Ex root:/FolderA",
+          "description": "Specify the Folder Path to which you want to Upload Item in Drive Resource. Ex root:/FolderA"
+        },
+        {
+          "name": "filename",
+          "title": "File Name",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify the Name of the File which is to be Uploaded.",
+          "description": "Specify the Name of the File which is to be Uploaded."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "size": "",
+        "file": {}
+      }
+    },
+    {
+      "operation": "list_drives",
+      "title": "List Drives",
+      "annotation": "list_drives",
+      "description": "Retrieve the list of Drive resources available for a target.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "driveType": "",
+            "name": "",
+            "owner": {
+              "user": {
+                "id": "",
+                "displayName": ""
+              }
+            }
+          }
+        ]
+      },
+      "parameters": []
+    }
+  ]
+}

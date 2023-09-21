@@ -1,0 +1,588 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "5e656884-ea3e-4a06-ad62-ddece757cbf0",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Microsoft OneDrive - 1.0.0",
+      "description": "OneDrive is a cloud storage and file synchronization service developed by Microsoft. It allows users to store their files and documents securely in the cloud, making them accessible from various devices with an internet connection. OneDrive integrates seamlessly with Microsoft Office applications, enabling users to create, edit, and collaborate on documents in real time. It offers features such as automatic backup of photos and videos from mobile devices, file sharing with others, version history for documents, and the ability to access files offline.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Microsoft",
+        "microsoft-onedrive"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "1ba8e8e7-91d0-4aab-a57b-7538bab8c74f",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "Retrieve the properties and relationships of a User's Drive resource.",
+          "name": " Get User OneDrive",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6a43d7a5-79c7-4d37-b4ee-41d9884b63b0",
+          "steps": [
+            {
+              "uuid": "6a43d7a5-79c7-4d37-b4ee-41d9884b63b0",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "af57c9ea-33c5-413f-9b30-a825292fee8b",
+                "title": "Microsoft OneDrive:  Get User OneDrive",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "6a2645a2-b4d1-4861-b02c-0e6b0dc0e367",
+              "@type": "WorkflowStep",
+              "name": " Get User OneDrive",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "get_user_onedrive",
+                "operationTitle": " Get User OneDrive",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "591cd83f-fb27-40f7-830b-3e68cdf0de12",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start->  Get User OneDrive",
+              "sourceStep": "/api/3/workflow_steps/6a43d7a5-79c7-4d37-b4ee-41d9884b63b0",
+              "targetStep": "/api/3/workflow_steps/6a2645a2-b4d1-4861-b02c-0e6b0dc0e367"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ab660dac-12ac-4075-a282-bb25e9b83922",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "This action fetches the access to a Group's or Site's default Document library.",
+          "name": "Get Document Library",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/48599573-55c5-4aa2-8b4e-27e9e4587eaf",
+          "steps": [
+            {
+              "uuid": "48599573-55c5-4aa2-8b4e-27e9e4587eaf",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "9741003b-0ee3-45d4-8eb6-beead072b3d3",
+                "title": "Microsoft OneDrive: Get Document Library",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "f799a68d-9a3d-4f58-a29e-54cc19660d07",
+              "@type": "WorkflowStep",
+              "name": "Get Document Library",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "get_document_library",
+                "operationTitle": "Get Document Library",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "b94e0402-5329-46dd-b3bc-8a7365266055",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Document Library",
+              "sourceStep": "/api/3/workflow_steps/48599573-55c5-4aa2-8b4e-27e9e4587eaf",
+              "targetStep": "/api/3/workflow_steps/f799a68d-9a3d-4f58-a29e-54cc19660d07"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "5b6e0573-1c94-4755-9d75-b75604af096c",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "Retrieves the Properties and relationships of Drive Resource by Drive ID.",
+          "name": "Get Drive By ID",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/0bcfbe67-b3b8-46cc-88f5-6825bca56d94",
+          "steps": [
+            {
+              "uuid": "0bcfbe67-b3b8-46cc-88f5-6825bca56d94",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "dce64d6b-fa74-4aba-9dc8-32952891c6fb",
+                "title": "Microsoft OneDrive: Get Drive By ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "766b112a-4eb1-43f5-88f4-1dcef1fe660f",
+              "@type": "WorkflowStep",
+              "name": "Get Drive By ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "get_drive_by_id",
+                "operationTitle": "Get Drive By ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "2752f8c0-7a1b-460e-b639-7c4987b514ef",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Drive By ID",
+              "sourceStep": "/api/3/workflow_steps/0bcfbe67-b3b8-46cc-88f5-6825bca56d94",
+              "targetStep": "/api/3/workflow_steps/766b112a-4eb1-43f5-88f4-1dcef1fe660f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e3c4a3fb-6cbd-4473-970d-b95ecbc1d6f7",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "This action Creates a new folder or DriveItem in a Drive with a specified parent item or path.",
+          "name": "Create Folder",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3d3d1769-1fa2-49c0-9c64-c0a5dd0afcd2",
+          "steps": [
+            {
+              "uuid": "3d3d1769-1fa2-49c0-9c64-c0a5dd0afcd2",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "abbad605-f82e-4a7f-8f36-53c8d6e0ce34",
+                "title": "Microsoft OneDrive: Create Folder",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "69335497-5b32-45d0-a1a5-0a9afbc8ac02",
+              "@type": "WorkflowStep",
+              "name": "Create Folder",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": {
+                  "folder_structure": {
+                    "name": "New Folder",
+                    "folder": {},
+                    "@microsoft.graph.conflictBehavior": "rename"
+                  },
+                  "parent_item_id": "root"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "create_folder",
+                "operationTitle": "Create Folder",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "138dae4e-2408-4ea0-8d2a-974b2ba8149d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Folder",
+              "sourceStep": "/api/3/workflow_steps/3d3d1769-1fa2-49c0-9c64-c0a5dd0afcd2",
+              "targetStep": "/api/3/workflow_steps/69335497-5b32-45d0-a1a5-0a9afbc8ac02"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2cf7a8e7-1ff2-4ade-ad12-ed2fa97c836d",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "Download the contents of the primary stream (file) of a DriveItem. Only driveItems with the file property can be downloaded.",
+          "name": "Download File",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/0a11301e-ff41-4545-977f-a952604a60f6",
+          "steps": [
+            {
+              "uuid": "0a11301e-ff41-4545-977f-a952604a60f6",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "dcb1ee2a-47f7-46a4-9804-8592f80683df",
+                "title": "Microsoft OneDrive: Download File",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "40eff6e9-1075-4222-b5ea-d60e991cfad5",
+              "@type": "WorkflowStep",
+              "name": "Download File",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "download_file",
+                "operationTitle": "Download File",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3aac1025-8d58-42a0-a15e-7098adcd5f62",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Download File",
+              "sourceStep": "/api/3/workflow_steps/0a11301e-ff41-4545-977f-a952604a60f6",
+              "targetStep": "/api/3/workflow_steps/40eff6e9-1075-4222-b5ea-d60e991cfad5"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a3460bfa-0e97-4263-b4a2-07a51d66d7d6",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "This simple upload API allows you to provide the contents of a new file and then upload it to the provided Path on the OneDrive.This method only supports files up to 4MB in size.",
+          "name": "Upload File",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/20a19079-9099-4581-a612-58deeabe6d60",
+          "steps": [
+            {
+              "uuid": "20a19079-9099-4581-a612-58deeabe6d60",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "673f1a60-d44e-4a0a-8af7-3e939109f87b",
+                "title": "Microsoft OneDrive: Upload File",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7c5128fd-8703-42b3-b42c-f48778c89354",
+              "@type": "WorkflowStep",
+              "name": "Upload File",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": {
+                  "parent_item_id": "root"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "upload_file",
+                "operationTitle": "Upload File",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "0c1352ad-3060-47b4-93b7-75cc103db6dd",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Upload File",
+              "sourceStep": "/api/3/workflow_steps/20a19079-9099-4581-a612-58deeabe6d60",
+              "targetStep": "/api/3/workflow_steps/7c5128fd-8703-42b3-b42c-f48778c89354"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "14b11170-a058-4922-a7ca-f6b2fdeae29c",
+          "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
+          "triggerLimit": null,
+          "description": "Retrieve the list of Drive resources available for a target.",
+          "name": "List Drives",
+          "tag": "#Microsoft OneDrive",
+          "recordTags": [
+            "Microsoft",
+            "microsoft-onedrive"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d17133ac-8fb0-4c13-87d1-6693d277c6a0",
+          "steps": [
+            {
+              "uuid": "d17133ac-8fb0-4c13-87d1-6693d277c6a0",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "528e9463-8931-448f-a065-bb098588dfe0",
+                "title": "Microsoft OneDrive: List Drives",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "149f6c61-fbeb-460c-9412-f4c36df790d0",
+              "@type": "WorkflowStep",
+              "name": "List Drives",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Microsoft OneDrive",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-onedrive",
+                "operation": "list_drives",
+                "operationTitle": "List Drives",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "842cb5c1-8c50-4b22-abf7-b17f2a8953a0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> List Drives",
+              "sourceStep": "/api/3/workflow_steps/d17133ac-8fb0-4c13-87d1-6693d277c6a0",
+              "targetStep": "/api/3/workflow_steps/149f6c61-fbeb-460c-9412-f4c36df790d0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
