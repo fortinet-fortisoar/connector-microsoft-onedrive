@@ -426,7 +426,7 @@
           "collection": "/api/3/workflow_collections/5e656884-ea3e-4a06-ad62-ddece757cbf0",
           "triggerLimit": null,
           "description": "This simple upload API allows you to provide the contents of a new file and then upload it to the provided Path on the OneDrive.This method only supports files up to 4MB in size.",
-          "name": "Upload FIle",
+          "name": "Upload File",
           "tag": "#Microsoft OneDrive",
           "recordTags": [
             "Microsoft",
@@ -447,7 +447,7 @@
               "status": null,
               "arguments": {
                 "route": "673f1a60-d44e-4a0a-8af7-3e939109f87b",
-                "title": "Microsoft OneDrive: Upload FIle",
+                "title": "Microsoft OneDrive: Upload File",
                 "resources": [
                   "alerts"
                 ],
@@ -468,7 +468,7 @@
             {
               "uuid": "7c5128fd-8703-42b3-b42c-f48778c89354",
               "@type": "WorkflowStep",
-              "name": "Upload FIle",
+              "name": "Upload File",
               "description": null,
               "status": null,
               "arguments": {
@@ -480,7 +480,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-onedrive",
                 "operation": "upload_file",
-                "operationTitle": "Upload FIle",
+                "operationTitle": "Upload File",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -496,7 +496,7 @@
               "uuid": "0c1352ad-3060-47b4-93b7-75cc103db6dd",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Upload FIle",
+              "name": "Start-> Upload File",
               "sourceStep": "/api/3/workflow_steps/20a19079-9099-4581-a612-58deeabe6d60",
               "targetStep": "/api/3/workflow_steps/7c5128fd-8703-42b3-b42c-f48778c89354"
             }

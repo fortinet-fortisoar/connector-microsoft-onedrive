@@ -468,7 +468,7 @@
     },
     {
       "operation": "upload_file",
-      "title": "Upload FIle",
+      "title": "Upload File",
       "annotation": "upload_file",
       "description": "This simple upload API allows you to provide the contents of a new file and then upload it to the provided Path on the OneDrive.This method only supports files up to 4MB in size.",
       "category": "investigation",
