@@ -149,6 +149,112 @@
   },
   "operations": [
     {
+      "operation": "create_folder",
+      "title": "Create Folder",
+      "annotation": "create_folder",
+      "description": "This action Creates a new folder or DriveItem in a Drive with a specified parent item or path.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "associated_with",
+          "title": "Associated With",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify Whether You want to create Folder in a Drive via Drive ID or Find Drive by it's User ID.",
+          "description": "Specify Whether You want to create Folder in a Drive via Drive ID or Find Drive by it's User ID.",
+          "options": [
+            "Drive",
+            "User"
+          ],
+          "onchange": {
+            "Drive": [
+              {
+                "name": "d_id",
+                "title": "Drive ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique Drive identifier for the drive requested.",
+                "description": "Specify the unique Drive identifier for the drive requested."
+              }
+            ],
+            "User": [
+              {
+                "name": "u_id",
+                "title": "User ID",
+                "type": "text",
+                "editable": true,
+                "visible": true,
+                "required": true,
+                "tooltip": "Specify the unique User identifier associated with the Drive.",
+                "description": "Specify the unique User identifier associated with the Drive."
+              }
+            ]
+          }
+        },
+        {
+          "name": "folder_structure",
+          "title": "Folder Structure",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": {
+            "name": "New Folder",
+            "folder": {},
+            "@microsoft.graph.conflictBehavior": "rename"
+          },
+          "tooltip": "Specify a JSON representation of the DriveItem Folder to create in the Drive.",
+          "description": "Specify a JSON representation of the DriveItem Folder to create in the Drive."
+        },
+        {
+          "name": "parent_item_id",
+          "title": "Parent Item ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": "root",
+          "tooltip": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA",
+          "description": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA"
+        }
+      ],
+      "output_schema": {
+        "createdBy": {
+          "user": {
+            "displayName": "",
+            "id": ""
+          }
+        },
+        "createdDateTime": "",
+        "eTag": "",
+        "id": "",
+        "lastModifiedBy": {
+          "user": {
+            "displayName": "",
+            "id": ""
+          }
+        },
+        "lastModifiedDateTime": "",
+        "name": "",
+        "parentReference": {
+          "driveId": "",
+          "id": "",
+          "path": ""
+        },
+        "size": "",
+        "folder": {
+          "childCount": ""
+        }
+      }
+    },
+    {
       "operation": "get_user_onedrive",
       "title": " Get User OneDrive",
       "annotation": "get_user_onedrive",
@@ -296,110 +402,30 @@
       }
     },
     {
-      "operation": "create_folder",
-      "title": "Create Folder",
-      "annotation": "create_folder",
-      "description": "This action Creates a new folder or DriveItem in a Drive with a specified parent item or path.",
+      "operation": "list_drives",
+      "title": "List Drives",
+      "annotation": "list_drives",
+      "description": "Retrieve the list of Drive resources available for a target.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
       "enabled": true,
-      "parameters": [
-        {
-          "name": "associated_with",
-          "title": "Associated With",
-          "type": "select",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "tooltip": "Specify Whether You want to create Folder in a Drive via Drive ID or Find Drive by it's User ID.",
-          "description": "Specify Whether You want to create Folder in a Drive via Drive ID or Find Drive by it's User ID.",
-          "options": [
-            "Drive",
-            "User"
-          ],
-          "onchange": {
-            "Drive": [
-              {
-                "name": "d_id",
-                "title": "Drive ID",
-                "type": "text",
-                "editable": true,
-                "visible": true,
-                "required": true,
-                "tooltip": "Specify the unique Drive identifier for the drive requested.",
-                "description": "Specify the unique Drive identifier for the drive requested."
-              }
-            ],
-            "User": [
-              {
-                "name": "u_id",
-                "title": "User ID",
-                "type": "text",
-                "editable": true,
-                "visible": true,
-                "required": true,
-                "tooltip": "Specify the unique User identifier associated with the Drive.",
-                "description": "Specify the unique User identifier associated with the Drive."
-              }
-            ]
-          }
-        },
-        {
-          "name": "folder_structure",
-          "title": "Folder Structure",
-          "type": "json",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "value": {
-            "name": "New Folder",
-            "folder": {},
-            "@microsoft.graph.conflictBehavior": "rename"
-          },
-          "tooltip": "Specify a JSON representation of the DriveItem Folder to create in the Drive.",
-          "description": "Specify a JSON representation of the DriveItem Folder to create in the Drive."
-        },
-        {
-          "name": "parent_item_id",
-          "title": "Parent Item ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "value": "root",
-          "tooltip": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA",
-          "description": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA"
-        }
-      ],
       "output_schema": {
-        "createdBy": {
-          "user": {
-            "displayName": "",
-            "id": ""
+        "value": [
+          {
+            "id": "",
+            "driveType": "",
+            "name": "",
+            "owner": {
+              "user": {
+                "id": "",
+                "displayName": ""
+              }
+            }
           }
-        },
-        "createdDateTime": "",
-        "eTag": "",
-        "id": "",
-        "lastModifiedBy": {
-          "user": {
-            "displayName": "",
-            "id": ""
-          }
-        },
-        "lastModifiedDateTime": "",
-        "name": "",
-        "parentReference": {
-          "driveId": "",
-          "id": "",
-          "path": ""
-        },
-        "size": "",
-        "folder": {
-          "childCount": ""
-        }
-      }
+        ]
+      },
+      "parameters": []
     },
     {
       "operation": "download_file",
@@ -568,32 +594,6 @@
         "size": "",
         "file": {}
       }
-    },
-    {
-      "operation": "list_drives",
-      "title": "List Drives",
-      "annotation": "list_drives",
-      "description": "Retrieve the list of Drive resources available for a target.",
-      "category": "investigation",
-      "is_config_required": true,
-      "visible": true,
-      "enabled": true,
-      "output_schema": {
-        "value": [
-          {
-            "id": "",
-            "driveType": "",
-            "name": "",
-            "owner": {
-              "user": {
-                "id": "",
-                "displayName": ""
-              }
-            }
-          }
-        ]
-      },
-      "parameters": []
     }
   ]
 }
