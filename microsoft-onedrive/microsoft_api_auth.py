@@ -9,7 +9,6 @@ from time import time, ctime
 from datetime import datetime
 from connectors.core.connector import get_logger, ConnectorError
 from connectors.core.utils import update_connnector_config
-from operations import OneDrive
 
 logger = get_logger('onedrive')
 
@@ -187,9 +186,6 @@ def check(config, connector_info):
                 config['refresh_token'] = token_resp.get('refresh_token')
                 update_connnector_config(connector_info['connector_name'], connector_info['connector_version'], config,
                                          config['config_id'])
-        endpoint = "/drives"
-        OD = OneDrive(config)
-        OD.make_rest_call(endpoint=endpoint, method="GET")
     except Exception as err:
         raise ConnectorError(str(err))
 
