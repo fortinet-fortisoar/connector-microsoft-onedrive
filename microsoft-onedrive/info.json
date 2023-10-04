@@ -9,7 +9,7 @@
   "category": "Asset Management",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/microsoft-onedrive/698/microsoft-onedrive-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -152,7 +152,7 @@
       "operation": "create_folder",
       "title": "Create Folder",
       "annotation": "create_folder",
-      "description": "This action Creates a new folder or DriveItem in a Drive with a specified parent item or path.",
+      "description": "Creates a new folder or a drive item in OneDrive based on the drive or user ID, folder structure, and folder path that you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -221,8 +221,8 @@
           "visible": true,
           "required": true,
           "value": "root",
-          "tooltip": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA",
-          "description": "Specify the Folder Path to which you want to create Folder in Drive Resource. Ex root:/FolderA"
+          "tooltip": "Specify the folder path in which to create the folder. For example: root, or root:/folderA. ",
+          "description": "Specify the folder path in which to create the folder. For example: root, or root:/folderA. "
         }
       ],
       "output_schema": {
@@ -258,7 +258,7 @@
       "operation": "get_user_onedrive",
       "title": " Get User OneDrive",
       "annotation": "get_user_onedrive",
-      "description": "Retrieve the properties and relationships of a User's Drive resource.",
+      "description": "Retrieve the properties and relationships of a user's drive resource based on the user ID or principal name that you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -271,8 +271,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Specify the identifier for the user object who owns the OneDrive. It can be fetched from the User Section in Azure AD.",
-          "description": "Specify the identifier for the user object who owns the OneDrive. It can be fetched from the User Section in Azure AD."
+          "tooltip": "Specify the user ID or the principal name of the user object who owns the OneDrive. You can fetch this information from the user Section in Azure Active Directory.",
+          "description": "Specify the user ID or the principal name of the user object who owns the OneDrive. You can fetch this information from the user Section in Azure Active Directory."
         }
       ],
       "output_schema": {
@@ -297,7 +297,7 @@
       "operation": "get_document_library",
       "title": "Get Document Library",
       "annotation": "get_document_library",
-      "description": "This action fetches the access to a Group's or Site's default Document library.",
+      "description": "Fetches the access to a group's or site's default document library based on the group or user ID that you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -325,8 +325,8 @@
                 "editable": true,
                 "visible": true,
                 "required": true,
-                "tooltip": "Specify the Identifier for the group which owns the document library.. It can be fetched from the Group Section in Azure AD.",
-                "description": "Specify the Identifier for the group which owns the document library.. It can be fetched from the Group Section in Azure AD."
+                "tooltip": "Specify the Identifier for the group which owns the document library. It can be fetched from the Group Section in Azure AD.",
+                "description": "Specify the Identifier for the group which owns the document library. It can be fetched from the Group Section in Azure AD."
               }
             ],
             "Site": [
@@ -337,8 +337,8 @@
                 "editable": true,
                 "visible": true,
                 "required": true,
-                "tooltip": "Specify the Identifier for the Site which owns the document library.. It can be fetched from the Sites Section in Azure AD.",
-                "description": "Specify the Identifier for the Site which owns the document library.. It can be fetched from the Sites Section in Azure AD."
+                "tooltip": "Specify the Identifier for the Site which owns the document library. It can be fetched from the Sites Section in Azure AD.",
+                "description": "Specify the Identifier for the Site which owns the document library. It can be fetched from the Sites Section in Azure AD."
               }
             ]
           }
@@ -366,7 +366,7 @@
       "operation": "get_drive_by_id",
       "title": "Get Drive By ID",
       "annotation": "get_drive_by_id",
-      "description": "Retrieves the Properties and relationships of Drive Resource by Drive ID.",
+      "description": "Retrieves the Properties and relationships of Drive Resource based on the drive ID that you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -379,8 +379,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Specify the unique Drive identifier for the drive requested.",
-          "description": "Specify the unique Drive identifier for the drive requested."
+          "tooltip": "Specify the unique drive ID for the drive requested.",
+          "description": "Specify the unique drive ID for the drive requested."
         }
       ],
       "output_schema": {
@@ -431,7 +431,7 @@
       "operation": "download_file",
       "title": "Download File",
       "annotation": "download_file",
-      "description": "Download the contents of the primary stream (file) of a DriveItem. Only driveItems with the file property can be downloaded.",
+      "description": "Downloads the contents of a file based on the drive or user ID, and the item ID that you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -459,8 +459,8 @@
                 "editable": true,
                 "visible": true,
                 "required": true,
-                "tooltip": "Specify the unique Drive identifier for the drive requested.",
-                "description": "Specify the unique Drive identifier for the drive requested."
+                "tooltip": "Specify the unique Drive ID for the drive requested.",
+                "description": "Specify the unique Drive ID for the drive requested."
               }
             ],
             "User": [
@@ -471,8 +471,8 @@
                 "editable": true,
                 "visible": true,
                 "required": true,
-                "tooltip": "Specify the unique User identifier associated with the Drive.",
-                "description": "Specify the unique User identifier associated with the Drive."
+                "tooltip": "Specify the unique User ID associated with the Drive.",
+                "description": "Specify the unique User ID associated with the Drive."
               }
             ]
           }
@@ -484,7 +484,7 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Specify the ID of Item inside the Drive resource that you want to Download.",
+          "tooltip": "Specify the ID of item inside the drive resource that you want to Download.",
           "description": "Specify the ID of Item inside the Drive resource that you want to Download."
         }
       ],
@@ -496,7 +496,7 @@
       "operation": "upload_file",
       "title": "Upload File",
       "annotation": "upload_file",
-      "description": "This simple upload API allows you to provide the contents of a new file and then upload it to the provided Path on the OneDrive.This method only supports files up to 4MB in size.",
+      "description": "Uploads a file based on the drive or user ID, file type, reference ID, the item ID, and other input parameters that you have specified. This method only supports uploads of files up to 4MB in size.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -584,8 +584,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Specify the Name of the File which is to be Uploaded.",
-          "description": "Specify the Name of the File which is to be Uploaded."
+          "tooltip": "Specify the name of the File which is to be Uploaded.",
+          "description": "Specify the name of the File which is to be Uploaded."
         }
       ],
       "output_schema": {
